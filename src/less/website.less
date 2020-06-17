@@ -14,6 +14,8 @@
 @import "website/navigation.less";
 @import "website/search.less";
 
+@import "website/page-header.less";
+
 * {
     .box-sizing(border-box);
     -webkit-overflow-scrolling: touch;
@@ -42,4 +44,8 @@ body {
     font-size: @font-size-base;
     letter-spacing: .2px;
     .text-adjust(100%);
+}
+
+#book-search-results .search-results .has-results .search-results-item a {
+    color: @state-info-text;
 }

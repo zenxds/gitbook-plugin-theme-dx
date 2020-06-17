@@ -1,3 +1,5 @@
+var $ = require('jquery');
+
 var dropdown =   require('./dropdown');
 var keyboard =   require('./keyboard');
 var navigation = require('./navigation');
@@ -28,6 +30,8 @@ function init() {
             sidebar.toggle();
         }
     });
+
+    $('#book-search-input').prepend('<i class="fa fa-search"></i>');
 }
 
 gitbook.events.on('start', init);

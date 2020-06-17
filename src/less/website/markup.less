@@ -1,5 +1,11 @@
+@import "base/all.less";
+
 .markdown-section {
-    .gitbook-markdown(@md-color: @content-color, @md-line-height: @content-line-height);
+    .gitbook-markdown(
+        @md-color: @content-color,
+        @md-line-height: @content-line-height,
+        @md-link-color: @state-info-text
+    );
 
     .glossary-term {
         cursor: help;
