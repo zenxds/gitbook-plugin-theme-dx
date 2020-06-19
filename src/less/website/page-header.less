@@ -1,7 +1,13 @@
+@import "./variables.less";
+
 .page-header {
-  position: relative;
-  height: 56px;
-  line-height: 56px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: @page-header-height;
+  line-height: @page-header-height;
+  background: @body-background;
   z-index: 10;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.09);
 

@@ -215,6 +215,18 @@ function handleScrolling() {
     setChapterActive($chapter);
 }
 
+function updateOpenNav() {
+    var $active = $('.chapter.active');
+    var level = $active.attr('data-level');
+    
+    if (!level) {
+        return;
+    }
+
+    $('.articles').removeClass('open');
+    $active.parents('.articles').addClass('open');
+}
+
 /*
     Handle a change of url withotu refresh the whole page
 */
@@ -323,6 +335,7 @@ function handleNavigation(relativeUrl, push) {
                 }
 
                 deferred.resolve();
+                gitbook.events.trigger('page.render');
             }
         });
     }).promise();
@@ -462,6 +475,10 @@ function init() {
 
     // Prepare current page
     preparePage(false);
+
+    gitbook.events.on('page.change', function() {
+        updateOpenNav();
+    });
 }
 
 module.exports = {

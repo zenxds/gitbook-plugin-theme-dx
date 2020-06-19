@@ -1,3 +1,6 @@
+@import "base/all.less";
+@import "./variables.less";
+
 .book {
     position: relative;
     width: 100%;
@@ -43,6 +46,7 @@
         right: 0px;
         left: 0px;
         bottom: 0px;
+        padding-top: @page-header-height;
         overflow-y: auto;
     }
 
@@ -54,5 +58,55 @@
             position: static;
             min-height: calc(~"100% - 50px")
         }
+    }
+}
+
+.book-anchor {
+    position: fixed;
+    right: 40px;
+    top: @page-header-height + 64px;
+    width: 169px;
+
+    .book-anchor-title,
+    a {
+        border-left: 3px solid #e9e9e9;
+        color: rgba(0, 0, 0, 0.65);
+        padding: 6px 15px;
+    }
+
+    .anchor-h2 {
+        padding-left: 27px;
+    }
+
+    .book-anchor-title {
+        font-weight: bold;
+    }
+
+    a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .selected {
+        border-left-color: @state-brand-text;
+        color: @state-brand-text;
+    }
+}
+
+.page-breadcrumb {
+    margin-bottom: 18px;
+
+    a {
+        color: rgba(0, 0, 0, 0.3);
+
+        &:last-child {
+            color: rgba(0, 0, 0, 0.65);
+        }
+    }
+
+    i {
+        margin: 0 10px;
     }
 }
