@@ -2,7 +2,7 @@
   "name": "gitbook-plugin-theme-dx",
   "description": "dx theme for GitBook",
   "main": "./index.js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "engines": {
     "gitbook": ">=3.0.0"
   },

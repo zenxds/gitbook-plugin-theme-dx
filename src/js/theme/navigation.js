@@ -469,6 +469,11 @@ function init() {
     $(document).on('click', '.navigation-prev', handleLinkClick);
     $(document).on('click', '.navigation-next', handleLinkClick);
     $(document).on('click', '.summary [data-path] a', handleLinkClick);
+    $(document).on('click', '.summary .chapter > span', function() {
+        $chapters.removeClass('active');
+        $(this).parent().addClass('active');
+        updateOpenNav();
+    });
     $(document).on('click', '.page-inner a', handleLinkClick);
 
     $(window).resize(updateNavigationPosition);
