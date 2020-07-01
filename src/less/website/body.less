@@ -34,21 +34,22 @@
     right: 0px;
     left: 0px;
     bottom: 0px;
+    padding-top: @page-header-height;
     overflow-y: auto;
 
     color: @page-color;
     background: @body-background;
     .transition(left @sidebar-transition-duration ease);
 
-    .body-inner {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        left: 0px;
-        bottom: 0px;
-        padding-top: @page-header-height;
-        overflow-y: auto;
-    }
+    // .body-inner {
+    //     position: absolute;
+    //     top: 0px;
+    //     right: 0px;
+    //     left: 0px;
+    //     bottom: 0px;
+    //     padding-top: @page-header-height;
+    //     overflow-y: auto;
+    // }
 
     @media (max-width: @mobileMaxWidth) {
         .transition-transform(@sidebar-transition-duration ease);
@@ -96,9 +97,14 @@
 }
 
 .page-breadcrumb {
-    margin-bottom: 18px;
+    padding-bottom: 18px;
 
-    a {
+    .page-breadcrumb-inner {
+        padding-top: 18px;
+    }
+
+    a,
+    span {
         color: rgba(0, 0, 0, 0.3);
 
         &:last-child {

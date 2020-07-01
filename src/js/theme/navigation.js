@@ -470,9 +470,10 @@ function init() {
     $(document).on('click', '.navigation-next', handleLinkClick);
     $(document).on('click', '.summary [data-path] a', handleLinkClick);
     $(document).on('click', '.summary .chapter > span', function() {
-        $chapters.removeClass('active');
-        $(this).parent().addClass('active');
-        updateOpenNav();
+        var $chapter = $(this).parent();
+        var articles = $chapter.find('> .articles');
+
+        articles.toggleClass('open');
     });
     $(document).on('click', '.page-inner a', handleLinkClick);
 
@@ -481,6 +482,7 @@ function init() {
     // Prepare current page
     preparePage(false);
 
+    // start事件里执行init，之后触发page.change事件
     gitbook.events.on('page.change', function() {
         updateOpenNav();
     });

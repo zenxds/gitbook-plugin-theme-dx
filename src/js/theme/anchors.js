@@ -7,7 +7,7 @@ var scroller = '.book-body';
 function init() {
     // 页面有锚点跳转到对应位置
     if (location.hash) {
-        $(scroller).scrollTop($(decodeURIComponent(location.hash)).position().top);
+        $(scroller).scrollTop($(decodeURIComponent(location.hash)).position().top + 1);
     } else {
         $(scroller).scrollTop(0);
     }
@@ -26,9 +26,9 @@ function initScroll() {
 
         var target = $(this).attr('href');
         $(scroller).stop().animate({
-            scrollTop: $(target).position().top
+            scrollTop: $(target).position().top + 1
         }, 600, function() {
-            location.hash = target;
+            // location.hash = target;
         });
     });
 
@@ -49,24 +49,25 @@ function initScroll() {
         if (!$navs.filter('.selected').length) {
             $navs.eq(0).addClass('selected');
         }
-    }).trigger('scroll');
+    }).scrollTop(0).trigger('scroll');
 }
 
 function updateBreadcrumb() {
     var $active = $('.chapter.active');
     var arr = [];
     
-    $active.parents('.chapter').add($active).find('> a').map(function() {
+    $active.parents('.chapter').add($active).find('> a, > span').map(function() {
         var $elem = $(this);
+        var href = $elem.attr('href');
 
-        arr.push(substitute('<a href="{{ url }}">{{ text }}</a>', {
+        arr.push(substitute(href ? '<a href="{{ url }}">{{ text }}</a>' : '<span>{{ text }}</span>', {
             text: $elem.text(),
             url: $elem.attr('href')
         }));
     });
 
     if (arr.length > 1) {
-        $('.page-breadcrumb').html(arr.join('<i class="fa fa-angle-right"></i>'));
+        $('.page-breadcrumb').html('<div class="page-breadcrumb-inner">' + arr.join('<i class="fa fa-angle-right"></i>') + '</div>');
     }
 }
 
