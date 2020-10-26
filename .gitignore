@@ -29,3 +29,5 @@ node_modules
 
 _assets
 _book
+
+package-lock.json

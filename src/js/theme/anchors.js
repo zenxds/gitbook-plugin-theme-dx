@@ -5,18 +5,18 @@ var $ = require('jquery');
 var scroller = '.book-body';
 
 function init() {
-    // 页面有锚点跳转到对应位置
-    if (location.hash) {
-        $(scroller).scrollTop($(decodeURIComponent(location.hash)).position().top + 1);
-    } else {
-        $(scroller).scrollTop(0);
-    }
-
     gitbook.events.on('page.render', function() {
         updateAnchors();
         updateBreadcrumb();
 
         initScroll();
+
+        // 页面有锚点跳转到对应位置
+        if (location.hash) {
+            $(scroller).scrollTop($(decodeURIComponent(location.hash)).position().top + 1);
+        } else {
+            $(scroller).scrollTop(0);
+        }
     }).trigger('page.render');
 }
 
